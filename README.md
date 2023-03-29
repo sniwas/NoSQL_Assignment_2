@@ -28,21 +28,38 @@ Tables Created using hbase
 | SW079    | Vijay Yadav | HR        | 12  |
 | SA123    | Vignesh     | Developer | 6   |
 
+3. New Application Table
+
+| AID   | Name      | Qualification | YOE |
+|-------|-----------|---------------|-----|
+| 97562 | Sivakumar | IT            | 2   |
+| 86725 | Mugesh    | CSC,PG in MBA | 5   |
+
 I used the following terms to do the desired operation:
 
 1) put - The values of the family in the table are updated and added using the "put" keyword.
-2) scan - The table's entities are displayed using the "scan" keyword.
+    ![Screenshot 2023-03-29 080121](https://user-images.githubusercontent.com/122344020/228411342-3e626f8c-3457-411b-b48d-84bf2a01d362.png)
+2) scan  - The table's entities are displayed using the "scan" keyword.
+   get - The table's particular row are displayed using the "get" keyword.
+   ![Screenshot 2023-03-29 075855](https://user-images.githubusercontent.com/122344020/228411354-f10d65d9-e103-4ded-a9e4-d695ac4c64a2.png)
+   ![scan](https://user-images.githubusercontent.com/122344020/228555986-101a00b6-ecbb-4b99-b6cd-ab5d96c78f16.png)
 3) create - The table is created with the "create" keyword .
-4) delete - The value and the table can both be deleted using the "delete" keyword .
+    ![create](https://user-images.githubusercontent.com/122344020/228556438-0ac98691-625a-4284-9ac3-5f333b95989e.png)
+4) drop - The value and the table can both be deleted using the "drop" keyword before using it we need to disable the table.
+   ![delete](https://user-images.githubusercontent.com/122344020/228557530-f51c0737-5cd2-4fdf-b2a6-086f8ea70a2e.png)
 
 Column-family databases are an effective tool for managing data, and as businesses continue to produce and gather more and more data, their use will likely increase.
 
 Abbreviations used in this application:
-
+    
+    CID - Company ID
     AID - New Application ID 
     YOE  - Years of Experience
     LPA - Lakhs per Annum 
     
     
-![Screenshot 2023-03-29 080121](https://user-images.githubusercontent.com/122344020/228411342-3e626f8c-3457-411b-b48d-84bf2a01d362.png)
-![Screenshot 2023-03-29 075855](https://user-images.githubusercontent.com/122344020/228411354-f10d65d9-e103-4ded-a9e4-d695ac4c64a2.png)
+
+
+
+
+
