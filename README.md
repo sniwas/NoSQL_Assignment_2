@@ -13,9 +13,9 @@ New_Ap av_se,te_ids
 
 I used the following terms to do the desired operation:
 
-1)put - The values of the family in the table are updated and added using the "put" keyword.
-2)scan - The table's entities are displayed using the "scan" keyword.
-3)create - The table is created with the "create" keyword .
-4)delete - The value and the table can both be deleted using the "delete" keyword.
+1) put - The values of the family in the table are updated and added using the "put" keyword.
+2) scan - The table's entities are displayed using the "scan" keyword.
+3) create - The table is created with the "create" keyword .
+4) delete - The value and the table can both be deleted using the "delete" keyword .
 
 Column-family databases are an effective tool for managing data, and as businesses continue to produce and gather more and more data, their use will likely increase.
