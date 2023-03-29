@@ -1,0 +1,608 @@
+/ # hbase shell
+2023-03-29 01:07:45,501 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 1.3.2, r1bedb5bfbb5a99067e7bc54718c3124f632b6e17, Mon Mar 19 18:47:19 UTC 2018
+
+hbase(main):001:0> create 'Company','CID','Company Name','Revenue in Crore','Market Value','Total Employees'
+0 row(s) in 2.5490 seconds
+
+=> Hbase::Table - Company
+hbase(main):002:0> list TABLE Company
+NameError: uninitialized constant Company
+
+hbase(main):003:0> list
+TABLE                                                                                           
+Company                                                                                         
+1 row(s) in 0.0280 seconds
+
+=> ["Company"]
+hbase(main):004:0> put 'Company','1','Infosys','INR 500 cr','$69.48 Billion','259,619+'
+
+ERROR: no method 'add' for arguments (org.jruby.java.proxies.ArrayJavaProxy,org.jruby.RubyNil,org.jruby.RubyString,org.jruby.java.proxies.ArrayJavaProxy) on Java::OrgApacheHadoopHbaseClient::Put
+  available overloads:
+    (byte[],java.nio.ByteBuffer,long,java.nio.ByteBuffer)
+    (byte[],byte[],long,byte[])
+
+Here is some help for this command:
+Put a cell 'value' at specified table/row/column and optionally
+timestamp coordinates.  To put a cell value into table 'ns1:t1' or 't1'
+at row 'r1' under column 'c1' marked with the time 'ts1', do:
+
+  hbase> put 'ns1:t1', 'r1', 'c1', 'value'
+  hbase> put 't1', 'r1', 'c1', 'value'
+  hbase> put 't1', 'r1', 'c1', 'value', ts1
+  hbase> put 't1', 'r1', 'c1', 'value', {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+  hbase> put 't1', 'r1', 'c1', 'value', ts1, {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+  hbase> put 't1', 'r1', 'c1', 'value', ts1, {VISIBILITY=>'PRIVATE|SECRET'}
+
+The same commands also can be run on a table reference. Suppose you had a reference
+t to table 't1', the corresponding command would be:
+
+  hbase> t.put 'r1', 'c1', 'value', ts1, {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+
+
+hbase(main):005:0> put 'Company','CID:1','Company Name:Infosys','Revenue in Crore:INR 500 cr','Market Value:$69.48 Billion','Total Employees:259,619+'
+
+ERROR: no method 'add' for arguments (org.jruby.java.proxies.ArrayJavaProxy,org.jruby.java.proxies.ArrayJavaProxy,org.jruby.RubyString,org.jruby.java.proxies.ArrayJavaProxy) on Java::OrgApacheHadoopHbaseClient::Put
+  available overloads:
+    (byte[],java.nio.ByteBuffer,long,java.nio.ByteBuffer)
+    (byte[],byte[],long,byte[])
+
+Here is some help for this command:
+Put a cell 'value' at specified table/row/column and optionally
+timestamp coordinates.  To put a cell value into table 'ns1:t1' or 't1'
+at row 'r1' under column 'c1' marked with the time 'ts1', do:
+
+  hbase> put 'ns1:t1', 'r1', 'c1', 'value'
+  hbase> put 't1', 'r1', 'c1', 'value'
+  hbase> put 't1', 'r1', 'c1', 'value', ts1
+  hbase> put 't1', 'r1', 'c1', 'value', {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+  hbase> put 't1', 'r1', 'c1', 'value', ts1, {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+  hbase> put 't1', 'r1', 'c1', 'value', ts1, {VISIBILITY=>'PRIVATE|SECRET'}
+
+The same commands also can be run on a table reference. Suppose you had a reference
+t to table 't1', the corresponding command would be:
+
+  hbase> t.put 'r1', 'c1', 'value', ts1, {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+
+
+hbase(main):006:0> put 'Company','1','Company Name:Infosys','Revenue in Crore:INR 500 cr','Market Value:$69.48 Billion','Total Employees:259,619+'
+
+ERROR: no method 'add' for arguments (org.jruby.java.proxies.ArrayJavaProxy,org.jruby.java.proxies.ArrayJavaProxy,org.jruby.RubyString,org.jruby.java.proxies.ArrayJavaProxy) on Java::OrgApacheHadoopHbaseClient::Put
+  available overloads:
+    (byte[],java.nio.ByteBuffer,long,java.nio.ByteBuffer)
+    (byte[],byte[],long,byte[])
+
+Here is some help for this command:
+Put a cell 'value' at specified table/row/column and optionally
+timestamp coordinates.  To put a cell value into table 'ns1:t1' or 't1'
+at row 'r1' under column 'c1' marked with the time 'ts1', do:
+
+  hbase> put 'ns1:t1', 'r1', 'c1', 'value'
+  hbase> put 't1', 'r1', 'c1', 'value'
+  hbase> put 't1', 'r1', 'c1', 'value', ts1
+  hbase> put 't1', 'r1', 'c1', 'value', {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+  hbase> put 't1', 'r1', 'c1', 'value', ts1, {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+  hbase> put 't1', 'r1', 'c1', 'value', ts1, {VISIBILITY=>'PRIVATE|SECRET'}
+
+The same commands also can be run on a table reference. Suppose you had a reference
+t to table 't1', the corresponding command would be:
+
+  hbase> t.put 'r1', 'c1', 'value', ts1, {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+
+
+hbase(main):007:0> Company.put '1','Company Name:Infosys','Revenue in Crore:INR 500 cr','Market Value:$69.48 Billion','Total Employees:259,619+'
+NameError: uninitialized constant Company
+
+hbase(main):008:0> Company.put '1','Infosys','INR 500 cr','$69.48 Billion','259,619+'
+NameError: uninitialized constant Company
+
+hbase(main):009:0> put 'Company','1','Company Name:Infosys'
+
+ERROR: wrong number of arguments (3 for 4)
+
+Here is some help for this command:
+Put a cell 'value' at specified table/row/column and optionally
+timestamp coordinates.  To put a cell value into table 'ns1:t1' or 't1'
+at row 'r1' under column 'c1' marked with the time 'ts1', do:
+
+  hbase> put 'ns1:t1', 'r1', 'c1', 'value'
+  hbase> put 't1', 'r1', 'c1', 'value'
+  hbase> put 't1', 'r1', 'c1', 'value', ts1
+  hbase> put 't1', 'r1', 'c1', 'value', {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+  hbase> put 't1', 'r1', 'c1', 'value', ts1, {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+  hbase> put 't1', 'r1', 'c1', 'value', ts1, {VISIBILITY=>'PRIVATE|SECRET'}
+
+The same commands also can be run on a table reference. Suppose you had a reference
+t to table 't1', the corresponding command would be:
+
+  hbase> t.put 'r1', 'c1', 'value', ts1, {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+
+
+hbase(main):010:0> put 'Company','Company Name','Infosys'
+
+ERROR: wrong number of arguments (3 for 4)
+
+Here is some help for this command:
+Put a cell 'value' at specified table/row/column and optionally
+timestamp coordinates.  To put a cell value into table 'ns1:t1' or 't1'
+at row 'r1' under column 'c1' marked with the time 'ts1', do:
+
+  hbase> put 'ns1:t1', 'r1', 'c1', 'value'
+  hbase> put 't1', 'r1', 'c1', 'value'
+  hbase> put 't1', 'r1', 'c1', 'value', ts1
+  hbase> put 't1', 'r1', 'c1', 'value', {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+  hbase> put 't1', 'r1', 'c1', 'value', ts1, {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+  hbase> put 't1', 'r1', 'c1', 'value', ts1, {VISIBILITY=>'PRIVATE|SECRET'}
+
+The same commands also can be run on a table reference. Suppose you had a reference
+t to table 't1', the corresponding command would be:
+
+  hbase> t.put 'r1', 'c1', 'value', ts1, {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+
+
+hbase(main):011:0> Company.put 'CID', '1','1'
+NameError: uninitialized constant Company
+
+hbase(main):012:0> put 'Company','1','Company Name','Infosys'
+0 row(s) in 0.1380 seconds
+
+hbase(main):013:0> list
+TABLE                                                                                           
+Company                                                                                         
+1 row(s) in 0.0150 seconds
+
+=> ["Company"]
+hbase(main):014:0> get 'Company','1'
+COLUMN                    CELL                                                                  
+ Company Name:            timestamp=1680055780958, value=Infosys                                
+1 row(s) in 0.0380 seconds
+
+hbase(main):015:0> put 'Company','2','Company Name','Wipro'
+0 row(s) in 0.0070 seconds
+
+hbase(main):016:0> put 'Company','3','Company Name','Amazon'
+0 row(s) in 0.0070 seconds
+
+hbase(main):017:0> get 'Company','1','CID','1'
+COLUMN                    CELL                                                                  
+
+ERROR: org.apache.hadoop.hbase.regionserver.NoSuchColumnFamilyException: Column family 1 does not exist in region Company,,1680054971426.ab85482a004934c72a5d62fdd8dae8f3. in table 'Company', {NAME => 'CID', BLOOMFILTER => 'ROW', VERSIONS => '1', IN_MEMORY => 'false', KEEP_DELETED_CELLS => 'FALSE', DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', COMPRESSION => 'NONE', MIN_VERSIONS => '0', BLOCKCACHE => 'true', BLOCKSIZE => '65536', REPLICATION_SCOPE => '0'}, {NAME => 'Company Name', BLOOMFILTER => 'ROW', VERSIONS => '1', IN_MEMORY => 'false', KEEP_DELETED_CELLS => 'FALSE', DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', COMPRESSION => 'NONE', MIN_VERSIONS => '0', BLOCKCACHE => 'true', BLOCKSIZE => '65536', REPLICATION_SCOPE => '0'}, {NAME => 'Market Value', BLOOMFILTER => 'ROW', VERSIONS => '1', IN_MEMORY => 'false', KEEP_DELETED_CELLS => 'FALSE', DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', COMPRESSION => 'NONE', MIN_VERSIONS => '0', BLOCKCACHE => 'true', BLOCKSIZE => '65536', REPLICATION_SCOPE => '0'}, {NAME => 'Revenue in Crore', BLOOMFILTER => 'ROW', VERSIONS => '1', IN_MEMORY => 'false', KEEP_DELETED_CELLS => 'FALSE', DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', COMPRESSION => 'NONE', MIN_VERSIONS => '0', BLOCKCACHE => 'true', BLOCKSIZE => '65536', REPLICATION_SCOPE => '0'}, {NAME => 'Total Employees', BLOOMFILTER => 'ROW', VERSIONS => '1', IN_MEMORY => 'false', KEEP_DELETED_CELLS => 'FALSE', DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', COMPRESSION => 'NONE', MIN_VERSIONS => '0', BLOCKCACHE => 'true', BLOCKSIZE => '65536', REPLICATION_SCOPE => '0'}
+at org.apache.hadoop.hbase.regionserver.HRegion.checkFamily(HRegion.java:8100)
+at org.apache.hadoop.hbase.regionserver.HRegion.get(HRegion.java:7088)
+at org.apache.hadoop.hbase.regionserver.RSRpcServices.get(RSRpcServices.java:2194)
+at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:35068)
+at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2349)
+at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:123)
+at org.apache.hadoop.hbase.ipc.RpcExecutor$Handler.run(RpcExecutor.java:188)
+at org.apache.hadoop.hbase.ipc.RpcExecutor$Handler.run(RpcExecutor.java:168)
+
+Here is some help for this command:
+Get row or cell contents; pass table name, row, and optionally
+a dictionary of column(s), timestamp, timerange and versions. Examples:
+
+  hbase> get 'ns1:t1', 'r1'
+  hbase> get 't1', 'r1'
+  hbase> get 't1', 'r1', {TIMERANGE => [ts1, ts2]}
+  hbase> get 't1', 'r1', {COLUMN => 'c1'}
+  hbase> get 't1', 'r1', {COLUMN => ['c1', 'c2', 'c3']}
+  hbase> get 't1', 'r1', {COLUMN => 'c1', TIMESTAMP => ts1}
+  hbase> get 't1', 'r1', {COLUMN => 'c1', TIMERANGE => [ts1, ts2], VERSIONS => 4}
+  hbase> get 't1', 'r1', {COLUMN => 'c1', TIMESTAMP => ts1, VERSIONS => 4}
+  hbase> get 't1', 'r1', {FILTER => "ValueFilter(=, 'binary:abc')"}
+  hbase> get 't1', 'r1', 'c1'
+  hbase> get 't1', 'r1', 'c1', 'c2'
+  hbase> get 't1', 'r1', ['c1', 'c2']
+  hbase> get 't1', 'r1', {COLUMN => 'c1', ATTRIBUTES => {'mykey'=>'myvalue'}}
+  hbase> get 't1', 'r1', {COLUMN => 'c1', AUTHORIZATIONS => ['PRIVATE','SECRET']}
+  hbase> get 't1', 'r1', {CONSISTENCY => 'TIMELINE'}
+  hbase> get 't1', 'r1', {CONSISTENCY => 'TIMELINE', REGION_REPLICA_ID => 1}
+
+Besides the default 'toStringBinary' format, 'get' also supports custom formatting by
+column.  A user can define a FORMATTER by adding it to the column name in the get
+specification.  The FORMATTER can be stipulated: 
+
+ 1. either as a org.apache.hadoop.hbase.util.Bytes method name (e.g, toInt, toString)
+ 2. or as a custom class followed by method name: e.g. 'c(MyFormatterClass).format'.
+
+Example formatting cf:qualifier1 and cf:qualifier2 both as Integers: 
+  hbase> get 't1', 'r1' {COLUMN => ['cf:qualifier1:toInt',
+    'cf:qualifier2:c(org.apache.hadoop.hbase.util.Bytes).toInt'] } 
+
+Note that you can specify a FORMATTER by column only (cf:qualifier).  You cannot specify
+a FORMATTER for all columns of a column family.
+    
+The same commands also can be run on a reference to a table (obtained via get_table or
+create_table). Suppose you had a reference t to table 't1', the corresponding commands
+would be:
+
+  hbase> t.get 'r1'
+  hbase> t.get 'r1', {TIMERANGE => [ts1, ts2]}
+  hbase> t.get 'r1', {COLUMN => 'c1'}
+  hbase> t.get 'r1', {COLUMN => ['c1', 'c2', 'c3']}
+  hbase> t.get 'r1', {COLUMN => 'c1', TIMESTAMP => ts1}
+  hbase> t.get 'r1', {COLUMN => 'c1', TIMERANGE => [ts1, ts2], VERSIONS => 4}
+  hbase> t.get 'r1', {COLUMN => 'c1', TIMESTAMP => ts1, VERSIONS => 4}
+  hbase> t.get 'r1', {FILTER => "ValueFilter(=, 'binary:abc')"}
+  hbase> t.get 'r1', 'c1'
+  hbase> t.get 'r1', 'c1', 'c2'
+  hbase> t.get 'r1', ['c1', 'c2']
+  hbase> t.get 'r1', {CONSISTENCY => 'TIMELINE'}
+  hbase> t.get 'r1', {CONSISTENCY => 'TIMELINE', REGION_REPLICA_ID => 1}
+
+
+hbase(main):018:0> put 'Company','1','CID','1'
+0 row(s) in 0.0060 seconds
+
+hbase(main):019:0> put 'Company','2','CID','2'
+0 row(s) in 0.0070 seconds
+
+hbase(main):020:0> put 'Company','3','CID','3'
+0 row(s) in 0.0050 seconds
+
+hbase(main):021:0> put 'Company','1','Revenue in Crore','INR 500 cr'
+0 row(s) in 0.0070 seconds
+
+hbase(main):022:0> put 'Company','2','Revenue in Crore','INR 569 cr'
+0 row(s) in 0.0040 seconds
+
+hbase(main):023:0> put 'Company','3','Revenue in Crore','INR 21,200 cr'
+0 row(s) in 0.0050 seconds
+
+hbase(main):024:0> put 'Company','1','Market Value','$69.48 Billion'
+0 row(s) in 0.0070 seconds
+
+hbase(main):025:0> put 'Company','2','Market Value','$24.15 Billion'
+0 row(s) in 0.0090 seconds
+
+hbase(main):026:0> put 'Company','3','Market Value','$1.011 Trillion'
+0 row(s) in 0.0050 seconds
+
+hbase(main):027:0> put 'Company','1','Total Employees','259,619+'
+0 row(s) in 0.0060 seconds
+
+hbase(main):028:0> put 'Company','2','Total Employees','231,671+'
+0 row(s) in 0.0100 seconds
+
+hbase(main):029:0> put 'Company','3','Total Employees','1,298,000+'
+0 row(s) in 0.0040 seconds
+
+hbase(main):030:0> get 'Company'
+
+ERROR: wrong number of arguments (1 for 2)
+
+Here is some help for this command:
+Get row or cell contents; pass table name, row, and optionally
+a dictionary of column(s), timestamp, timerange and versions. Examples:
+
+  hbase> get 'ns1:t1', 'r1'
+  hbase> get 't1', 'r1'
+  hbase> get 't1', 'r1', {TIMERANGE => [ts1, ts2]}
+  hbase> get 't1', 'r1', {COLUMN => 'c1'}
+  hbase> get 't1', 'r1', {COLUMN => ['c1', 'c2', 'c3']}
+  hbase> get 't1', 'r1', {COLUMN => 'c1', TIMESTAMP => ts1}
+  hbase> get 't1', 'r1', {COLUMN => 'c1', TIMERANGE => [ts1, ts2], VERSIONS => 4}
+  hbase> get 't1', 'r1', {COLUMN => 'c1', TIMESTAMP => ts1, VERSIONS => 4}
+  hbase> get 't1', 'r1', {FILTER => "ValueFilter(=, 'binary:abc')"}
+  hbase> get 't1', 'r1', 'c1'
+  hbase> get 't1', 'r1', 'c1', 'c2'
+  hbase> get 't1', 'r1', ['c1', 'c2']
+  hbase> get 't1', 'r1', {COLUMN => 'c1', ATTRIBUTES => {'mykey'=>'myvalue'}}
+  hbase> get 't1', 'r1', {COLUMN => 'c1', AUTHORIZATIONS => ['PRIVATE','SECRET']}
+  hbase> get 't1', 'r1', {CONSISTENCY => 'TIMELINE'}
+  hbase> get 't1', 'r1', {CONSISTENCY => 'TIMELINE', REGION_REPLICA_ID => 1}
+
+Besides the default 'toStringBinary' format, 'get' also supports custom formatting by
+column.  A user can define a FORMATTER by adding it to the column name in the get
+specification.  The FORMATTER can be stipulated: 
+
+ 1. either as a org.apache.hadoop.hbase.util.Bytes method name (e.g, toInt, toString)
+ 2. or as a custom class followed by method name: e.g. 'c(MyFormatterClass).format'.
+
+Example formatting cf:qualifier1 and cf:qualifier2 both as Integers: 
+  hbase> get 't1', 'r1' {COLUMN => ['cf:qualifier1:toInt',
+    'cf:qualifier2:c(org.apache.hadoop.hbase.util.Bytes).toInt'] } 
+
+Note that you can specify a FORMATTER by column only (cf:qualifier).  You cannot specify
+a FORMATTER for all columns of a column family.
+    
+The same commands also can be run on a reference to a table (obtained via get_table or
+create_table). Suppose you had a reference t to table 't1', the corresponding commands
+would be:
+
+  hbase> t.get 'r1'
+  hbase> t.get 'r1', {TIMERANGE => [ts1, ts2]}
+  hbase> t.get 'r1', {COLUMN => 'c1'}
+  hbase> t.get 'r1', {COLUMN => ['c1', 'c2', 'c3']}
+  hbase> t.get 'r1', {COLUMN => 'c1', TIMESTAMP => ts1}
+  hbase> t.get 'r1', {COLUMN => 'c1', TIMERANGE => [ts1, ts2], VERSIONS => 4}
+  hbase> t.get 'r1', {COLUMN => 'c1', TIMESTAMP => ts1, VERSIONS => 4}
+  hbase> t.get 'r1', {FILTER => "ValueFilter(=, 'binary:abc')"}
+  hbase> t.get 'r1', 'c1'
+  hbase> t.get 'r1', 'c1', 'c2'
+  hbase> t.get 'r1', ['c1', 'c2']
+  hbase> t.get 'r1', {CONSISTENCY => 'TIMELINE'}
+  hbase> t.get 'r1', {CONSISTENCY => 'TIMELINE', REGION_REPLICA_ID => 1}
+
+
+hbase(main):031:0> get 'Company','1'
+COLUMN                    CELL                                                                  
+ CID:                     timestamp=1680055923072, value=1                                      
+ Company Name:            timestamp=1680055780958, value=Infosys                                
+ Market Value:            timestamp=1680056039866, value=$69.48 Billion                         
+ Revenue in Crore:        timestamp=1680055974419, value=INR 500 cr                             
+ Total Employees:         timestamp=1680056113565, value=259,619+                               
+1 row(s) in 0.0190 seconds
+
+hbase(main):032:0> get 'Company','3'
+COLUMN                    CELL                                                                  
+ CID:                     timestamp=1680055938123, value=3                                      
+ Company Name:            timestamp=1680055892332, value=Amazon                                 
+ Market Value:            timestamp=1680056081974, value=$1.011 Trillion                        
+ Revenue in Crore:        timestamp=1680056000862, value=INR 21,200 cr                          
+ Total Employees:         timestamp=1680056141643, value=1,298,000+                             
+1 row(s) in 0.0210 seconds
+
+hbase(main):033:0> get 'Company','2'
+COLUMN                                        CELL                                                                                                                                 
+ CID:                                         timestamp=1680055931235, value=2                                                                                                     
+ Company Name:                                timestamp=1680055869494, value=Wipro                                                                                                 
+ Market Value:                                timestamp=1680056056601, value=$24.15 Billion                                                                                        
+ Revenue in Crore:                            timestamp=1680055986254, value=INR 569 cr                                                                                            
+ Total Employees:                             timestamp=1680056129075, value=231,671+                                                                                              
+1 row(s) in 0.1280 seconds
+
+hbase(main):034:0> create 'Staff','Staff ID','Position','LPA'
+0 row(s) in 1.2710 seconds
+
+=> Hbase::Table - Staff
+hbase(main):035:0> list
+TABLE                                                                                           
+Company                                                                                         
+Staff                                                                                           
+2 row(s) in 0.0360 seconds
+
+=> ["Company", "Staff"]
+hbase(main):036:0> put 'Staff','1','Staff ID','SI101'
+0 row(s) in 0.0850 seconds
+
+hbase(main):037:0> put 'Staff','1','Staff ID','SW079'
+0 row(s) in 0.0180 seconds
+
+hbase(main):038:0> put 'Staff','1','Staff ID','SA123'
+0 row(s) in 0.0050 seconds
+
+hbase(main):039:0> get 'Staff','1'
+COLUMN                    CELL                                                                  
+ Staff ID:                timestamp=1680095721984, value=SA123                                  
+1 row(s) in 0.0550 seconds
+
+hbase(main):040:0> put 'Staff','1','Staff ID','SI101'
+0 row(s) in 0.0140 seconds
+
+hbase(main):041:0> put 'Staff','2','Staff ID','SW079'
+0 row(s) in 0.0040 seconds
+
+hbase(main):042:0> put 'Staff','3','Staff ID','SA123'
+0 row(s) in 0.0090 seconds
+
+hbase(main):043:0> put 'Staff','1','Staff Name','Raju Ram'
+
+ERROR: Unknown column family! Valid column names: LPA:*, Position:*, Staff ID:*
+
+Here is some help for this command:
+Put a cell 'value' at specified table/row/column and optionally
+timestamp coordinates.  To put a cell value into table 'ns1:t1' or 't1'
+at row 'r1' under column 'c1' marked with the time 'ts1', do:
+
+  hbase> put 'ns1:t1', 'r1', 'c1', 'value'
+  hbase> put 't1', 'r1', 'c1', 'value'
+  hbase> put 't1', 'r1', 'c1', 'value', ts1
+  hbase> put 't1', 'r1', 'c1', 'value', {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+  hbase> put 't1', 'r1', 'c1', 'value', ts1, {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+  hbase> put 't1', 'r1', 'c1', 'value', ts1, {VISIBILITY=>'PRIVATE|SECRET'}
+
+The same commands also can be run on a table reference. Suppose you had a reference
+t to table 't1', the corresponding command would be:
+
+  hbase> t.put 'r1', 'c1', 'value', ts1, {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+
+
+hbase(main):044:0> delete 'Staff'
+
+ERROR: wrong number of arguments (1 for 3)
+
+Here is some help for this command:
+Put a delete cell value at specified table/row/column and optionally
+timestamp coordinates.  Deletes must match the deleted cell's
+coordinates exactly.  When scanning, a delete cell suppresses older
+versions. To delete a cell from  't1' at row 'r1' under column 'c1'
+marked with the time 'ts1', do:
+
+  hbase> delete 'ns1:t1', 'r1', 'c1', ts1
+  hbase> delete 't1', 'r1', 'c1', ts1
+  hbase> delete 't1', 'r1', 'c1', ts1, {VISIBILITY=>'PRIVATE|SECRET'}
+
+The same command can also be run on a table reference. Suppose you had a reference
+t to table 't1', the corresponding command would be:
+
+  hbase> t.delete 'r1', 'c1',  ts1
+  hbase> t.delete 'r1', 'c1',  ts1, {VISIBILITY=>'PRIVATE|SECRET'}
+
+
+hbase(main):045:0> Staff.delete
+NameError: uninitialized constant Staff
+
+hbase(main):046:0> add Staff
+NameError: uninitialized constant Staff
+
+hbase(main):047:0> add 'Staff'
+NoMethodError: undefined method `add' for #<Object:0x7327a447>
+
+hbase(main):048:0> update 'staff'
+NoMethodError: undefined method `update' for #<Object:0x7327a447>
+
+hbase(main):049:0> alter 'Staff',NAME=>'Staff Name'
+Updating all regions with the new schema...
+0/1 regions updated.
+1/1 regions updated.
+Done.
+0 row(s) in 3.0370 seconds
+
+hbase(main):050:0> put 'Staff','1','Staff Name','Raju Ram'
+0 row(s) in 0.0160 seconds
+
+hbase(main):051:0> put 'Staff','2','Staff Name','Vijay Yadav''
+hbase(main):052:0' 
+hbase(main):053:0' '
+0 row(s) in 0.0080 seconds
+
+hbase(main):054:0> put 'Staff','3','Staff Name','Vignesh'
+0 row(s) in 0.0120 seconds
+
+hbase(main):055:0> put 'Staff','2','Staff Name','Vijay Yadav'
+0 row(s) in 0.0060 seconds
+
+hbase(main):056:0> put 'Staff','1','Position','Manager'
+0 row(s) in 0.0090 seconds
+
+hbase(main):057:0> put 'Staff','2','Position','HR'
+0 row(s) in 0.0040 seconds
+
+hbase(main):058:0> put 'Staff','3','Position','Developer'
+0 row(s) in 0.0060 seconds
+
+hbase(main):059:0> put 'Staff','1','LPA',24
+0 row(s) in 0.0090 seconds
+
+hbase(main):060:0> put 'Staff','2','LPA',12
+0 row(s) in 0.0080 seconds
+
+hbase(main):061:0> put 'Staff','3','LPA',6
+0 row(s) in 0.0100 seconds
+
+hbase(main):062:0> scan 'Staff'
+ROW                       COLUMN+CELL                                                           
+ 1                        column=LPA:, timestamp=1680096151372, value=24                        
+ 1                        column=Position:, timestamp=1680096107395, value=Manager              
+ 1                        column=Staff ID:, timestamp=1680095755451, value=SI101                
+ 1                        column=Staff Name:, timestamp=1680096008633, value=Raju Ram           
+ 2                        column=LPA:, timestamp=1680096162632, value=12                        
+ 2                        column=Position:, timestamp=1680096115636, value=HR                   
+ 2                        column=Staff ID:, timestamp=1680095769697, value=SW079                
+ 2                        column=Staff Name:, timestamp=1680096062261, value=Vijay Yadav        
+ 3                        column=LPA:, timestamp=1680096170725, value=6                         
+ 3                        column=Position:, timestamp=1680096130413, value=Developer            
+ 3                        column=Staff ID:, timestamp=1680095776999, value=SA123                
+ 3                        column=Staff Name:, timestamp=1680096059401, value=Vignesh            
+3 row(s) in 0.1270 seconds
+
+hbase(main):063:0> create 'New application','AID','Name','Qualification','YOE'
+
+ERROR: Illegal character code:32, < > at 3. User-space table qualifiers can only contain 'alphanumeric characters': i.e. [a-zA-Z_0-9-.]: New application
+
+Here is some help for this command:
+Creates a table. Pass a table name, and a set of column family
+specifications (at least one), and, optionally, table configuration.
+Column specification can be a simple string (name), or a dictionary
+(dictionaries are described below in main help output), necessarily 
+including NAME attribute. 
+Examples:
+
+Create a table with namespace=ns1 and table qualifier=t1
+  hbase> create 'ns1:t1', {NAME => 'f1', VERSIONS => 5}
+
+Create a table with namespace=default and table qualifier=t1
+  hbase> create 't1', {NAME => 'f1'}, {NAME => 'f2'}, {NAME => 'f3'}
+  hbase> # The above in shorthand would be the following:
+  hbase> create 't1', 'f1', 'f2', 'f3'
+  hbase> create 't1', {NAME => 'f1', VERSIONS => 1, TTL => 2592000, BLOCKCACHE => true}
+  hbase> create 't1', {NAME => 'f1', CONFIGURATION => {'hbase.hstore.blockingStoreFiles' => '10'}}
+  
+Table configuration options can be put at the end.
+Examples:
+
+  hbase> create 'ns1:t1', 'f1', SPLITS => ['10', '20', '30', '40']
+  hbase> create 't1', 'f1', SPLITS => ['10', '20', '30', '40']
+  hbase> create 't1', 'f1', SPLITS_FILE => 'splits.txt', OWNER => 'johndoe'
+  hbase> create 't1', {NAME => 'f1', VERSIONS => 5}, METADATA => { 'mykey' => 'myvalue' }
+  hbase> # Optionally pre-split the table into NUMREGIONS, using
+  hbase> # SPLITALGO ("HexStringSplit", "UniformSplit" or classname)
+  hbase> create 't1', 'f1', {NUMREGIONS => 15, SPLITALGO => 'HexStringSplit'}
+  hbase> create 't1', 'f1', {NUMREGIONS => 15, SPLITALGO => 'HexStringSplit', REGION_REPLICATION => 2, CONFIGURATION => {'hbase.hregion.scan.loadColumnFamiliesOnDemand' => 'true'}}
+  hbase> create 't1', {NAME => 'f1', DFS_REPLICATION => 1}
+
+You can also keep around a reference to the created table:
+
+  hbase> t1 = create 't1', 'f1'
+
+Which gives you a reference to the table named 't1', on which you can then
+call methods.
+
+
+hbase(main):064:0> create 'New_Application','AID','Name','Qualification','YOE'
+0 row(s) in 1.2250 seconds
+
+=> Hbase::Table - New_Application
+hbase(main):065:0> put 'New_Application','1','AID',97562
+0 row(s) in 0.0250 seconds
+
+hbase(main):066:0> put 'New_Application','2','AID',86725
+0 row(s) in 0.0120 seconds
+
+hbase(main):067:0> put 'New_Application','1','Name','Sivakumar'
+0 row(s) in 0.0070 seconds
+
+hbase(main):068:0> put 'New_Application','2','Name','Mugesh'
+0 row(s) in 0.0110 seconds
+
+hbase(main):069:0> put 'New_Application','1','Qualification','IT'
+0 row(s) in 0.0110 seconds
+
+hbase(main):070:0> put 'New_Application','2','Qualification','CSC,PG in MBA''
+hbase(main):071:0' '
+0 row(s) in 0.0230 seconds
+
+hbase(main):072:0> put 'New_Application','2','Qualification','CSC,PG in MBA'
+0 row(s) in 0.0090 seconds
+
+hbase(main):073:0> put 'New_Application','1','YOE',2
+0 row(s) in 0.0070 seconds
+
+hbase(main):074:0> put 'New_Application','2','YOE',5
+0 row(s) in 0.0100 seconds
+
+hbase(main):075:0> scan 'New_Application'
+ROW                       COLUMN+CELL                                                           
+ 1                        column=AID:, timestamp=1680096661727, value=97562                     
+ 1                        column=Name:, timestamp=1680096688845, value=Sivakumar                
+ 1                        column=Qualification:, timestamp=1680096768876, value=IT              
+ 1                        column=YOE:, timestamp=1680096821309, value=2                         
+ 2                        column=AID:, timestamp=1680096672700, value=86725                     
+ 2                        column=Name:, timestamp=1680096704503, value=Mugesh                   
+ 2                        column=Qualification:, timestamp=1680096793202, value=CSC,PG in MBA   
+ 2                        column=YOE:, timestamp=1680096830613, value=5                         
+2 row(s) in 0.0410 seconds
+
+hbase(main):076:0> drop 'New_Application'
+
+ERROR: Table New_Application is enabled. Disable it first.
+
+Here is some help for this command:
+Drop the named table. Table must first be disabled:
+  hbase> drop 't1'
+  hbase> drop 'ns1:t1'
+
+
+hbase(main):077:0> disable 'New_Application'
+0 row(s) in 2.2660 seconds
+
+hbase(main):078:0> drop 'New_Application'
+0 row(s) in 1.2770 seconds
+
+hbase(main):079:0> exists 'New_Application'
+Table New_Application does not exist                                                            
+0 row(s) in 0.0180 seconds
+
+hbase(main):080:0> 
